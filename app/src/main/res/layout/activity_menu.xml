@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ROJOBARRA"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvMenuTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menú"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/btnSobreNosotros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sobre nosotros"
+        android:textSize="18sp"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnMenuBebidas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menú de bebidas"
+        android:textSize="18sp"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnTienda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tienda"
+        android:textSize="18sp"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnContacto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contacto"
+        android:textSize="18sp"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

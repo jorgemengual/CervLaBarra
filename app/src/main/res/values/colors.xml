@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">@color/ROJOBARRA</color>
+    <color name="NOSE">#D3303B</color>
+    <color name="purple_700"></color>
+    <color name="black">#FF000000</color>
+    <color name="blancobarra">#F3F4F4</color>
+    <color name="negrisbarra">#29282E</color>
+    <color name="ROJOBARRA">#D3303B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="NADA">#FF0000</color>
+
+</resources>
