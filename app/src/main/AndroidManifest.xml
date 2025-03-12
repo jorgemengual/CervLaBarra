@@ -38,11 +38,12 @@
             </intent-filter>
         </activity>
 
-        <!-- Agrega la definición de NosotrosActivity aquí -->
+
         <activity
             android:name="com.example.applabarra.menu.NosotrosActivity"
             android:exported="false" />
 
     </application>
 </manifest>
+
 
