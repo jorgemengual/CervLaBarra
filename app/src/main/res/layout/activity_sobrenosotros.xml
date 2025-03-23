@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/negrisbarra"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Bloque 1: Cabecera (Logo y Título) -->
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:contentDescription="@string/logo_desc"
+            android:layout_marginBottom="16dp"
+            android:alpha="0" />
+
+        <TextView
+            android:id="@+id/tvSobreNosotrosTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sobre Nosotros"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="24dp"
+            android:alpha="0" />
+
+        <!-- Bloque 2: Historia con imagen "Fotocopas" -->
+        <LinearLayout
+            android:id="@+id/blockHistoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp"
+            android:alpha="0">
+
+            <TextView
+                android:id="@+id/tvHistoria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="La Barra abrió sus puertas en 2020 con muchísima ilusión, marcando el inicio de una aventura apasionante que busca llevar la auténtica cultura cervecera a Cádiz."
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:padding="8dp" />
+
+            <ImageView
+                android:id="@+id/ivFotocopas"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_marginStart="8dp"
+                android:contentDescription="Cartel Fotocopas" />
+        </LinearLayout>
+
+        <!-- Bloque 3: Texto para introducir los carteles -->
+        <TextView
+            android:id="@+id/tvCarteles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nuestro bar, donde se mezcla tradición e innovación, es una parada obligatoria en la ciudad."
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            android:alpha="0" />
+
+        <!-- Bloque 4: Posters, mostrados uno al lado del otro -->
+        <LinearLayout
+            android:id="@+id/blockPosters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
+            android:alpha="0">
+            <ImageView
+                android:id="@+id/ivPoster1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Poster 1" />
+            <ImageView
+                android:id="@+id/ivPoster2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_marginStart="8dp"
+                android:contentDescription="Poster 2" />
+        </LinearLayout>
+
+        <!-- Bloque 5: Misión y visión con imagen del equipo a la izquierda -->
+        <LinearLayout
+            android:id="@+id/blockMision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp"
+            android:alpha="0">
+            <ImageView
+                android:id="@+id/ivEquipo"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Imagen del equipo" />
+            <TextView
+                android:id="@+id/tvMision"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ofrecemos cervezas artesanales de la más alta calidad y somos un punto de encuentro para los amantes de la cerveza."
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:padding="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+

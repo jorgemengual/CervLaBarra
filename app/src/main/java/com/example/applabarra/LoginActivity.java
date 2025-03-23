@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //Si el login es exitoso procederá a abrir la siguiente pantalla
                                 Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                                 startActivity(intent);
+                                overridePendingTransition(R.anim.slide_in, R.anim.fade_out);
                                 finish(); //Esto cierra la LoginActivity para que el usuario no pueda volver atrás
                             } else {
                                 // Muestra el mensaje de error enviado por el servidor

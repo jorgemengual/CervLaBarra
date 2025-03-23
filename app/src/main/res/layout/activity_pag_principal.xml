@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splashLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/negrisbarra"
-    tools:context=".PagPrincipal">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
 
+    <!-- Logo grande y centrado -->
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="399dp"
-        android:layout_height="584dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_bienvenido"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logoprincipal_"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/imageLogo"
+        android:layout_width="600dp"
+        android:layout_height="400dp"
+        android:src="@drawable/logoprincipal_"
+        android:contentDescription="@string/logo_desc" />
 
-    <Button
-        android:id="@+id/btn_bienvenido"
-        android:layout_width="195dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="104dp"
-        android:text="Bienvenido"
-        android:textColor="@color/blancobarra"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+    <!-- Indicador de carga -->
+    <TextView
+        android:id="@+id/tvLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cargando..."
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
+
+

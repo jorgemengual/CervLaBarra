@@ -4,12 +4,14 @@
     android:layout_height="match_parent"
     android:background="@color/ROJOBARRA"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/tvMenuTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="Menú"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -23,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="Sobre nosotros"
         android:textSize="18sp"
-        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/negrisbarra"
         android:textColor="@android:color/white"
         android:layout_marginBottom="16dp" />
 
@@ -33,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="Menú de bebidas"
         android:textSize="18sp"
-        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/negrisbarra"
         android:textColor="@android:color/white"
         android:layout_marginBottom="16dp" />
 
@@ -43,7 +45,7 @@
         android:layout_height="wrap_content"
         android:text="Tienda"
         android:textSize="18sp"
-        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/negrisbarra"
         android:textColor="@android:color/white"
         android:layout_marginBottom="16dp" />
 
@@ -53,7 +55,7 @@
         android:layout_height="wrap_content"
         android:text="Contacto"
         android:textSize="18sp"
-        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/negrisbarra"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

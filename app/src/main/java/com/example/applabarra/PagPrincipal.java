@@ -1,28 +1,38 @@
 package com.example.applabarra;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class PagPrincipal extends AppCompatActivity implements View.OnClickListener {
+public class PagPrincipal extends AppCompatActivity {
+
+    private static final int SPLASH_DURATION = 6000; // 6 segundos de duración
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Se establece el layout para la actividad principal
         setContentView(R.layout.activity_pag_principal);
 
-        // Inicio del botón de bienvenida y asignación del listener para manejar clics
-        Button bienvenido = findViewById(R.id.btn_bienvenido);
-        bienvenido.setOnClickListener(this);
-    }
+        // Oculta la barra de acción para que sea pantalla completa
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
-    @Override
-    public void onClick(View view) {
-        // Al hacer clic, se crea un Intent para navegar a la actividad de Login
-        Intent i = new Intent(PagPrincipal.this, LoginActivity.class);
-        startActivity(i);
+        ImageView imageLogo = findViewById(R.id.imageLogo);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_logo);
+        imageLogo.startAnimation(animation);
+
+        // Después del SPLASH_DURATION, lanza la siguiente Activity (LoginActivity)
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            Intent intent = new Intent(PagPrincipal.this, LoginActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // animación de transición
+            finish();
+        }, SPLASH_DURATION);
     }
 }

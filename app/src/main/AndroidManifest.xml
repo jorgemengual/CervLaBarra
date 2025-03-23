@@ -1,49 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.applabarra">
-
+    <!-- Permisos necesarios -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/isotipo"
         android:label="La Barra"
         android:roundIcon="@drawable/isotipo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppLaBarra"
-        tools:targetApi="31">
-
+        android:theme="@style/Theme.AppLaBarra">
         <activity
-            android:name=".menu.MenuActivity"
+            android:name=".menu.SobreNosotrosActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".RegistroActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-
+        <!-- Meta-data para la API Key de Google Maps -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCXqcFKkJpk91ZtkSUUbatNb969h1CtyBU" /> <!-- Pantalla de carga / Splash Screen -->
         <activity
             android:name=".PagPrincipal"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-
+        </activity> <!-- Login Activity -->
         <activity
-            android:name="com.example.applabarra.menu.NosotrosActivity"
+            android:name=".LoginActivity"
+            android:exported="false" /> <!-- Registro Activity -->
+        <activity
+            android:name=".RegistroActivity"
+            android:exported="false" /> <!-- Menu Activity -->
+        <activity
+            android:name=".menu.MenuActivity"
+            android:exported="false" /> <!-- Contacto Activity -->
+        <activity
+            android:name=".menu.ContactoActivity"
+            android:exported="false" /> <!-- Tienda Activity -->
+        <activity
+            android:name=".menu.tienda.TiendaActivity"
+            android:exported="false" /> <!-- Carrito Activity -->
+        <activity
+            android:name=".menu.tienda.CarritoActivity"
+            android:exported="false" /> <!-- Payment Activity -->
+        <activity
+            android:name=".menu.tienda.PaymentActivity"
             android:exported="false" />
 
     </application>
+
 </manifest>
-
-

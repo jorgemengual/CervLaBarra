@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">App La Barra</string>
+    <string name="logo_desc">Logo de la aplicación</string>
 </resources>

@@ -9,6 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.applabarra.R;
+import com.example.applabarra.menu.tienda.TiendaActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -49,7 +50,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Lanza NosotrosActivity
-                startActivity(new Intent(MenuActivity.this, NosotrosActivity.class));
+                startActivity(new Intent(MenuActivity.this, SobreNosotrosActivity.class));
             }
         });
 
