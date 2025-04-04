@@ -7,7 +7,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import android.view.LayoutInflater;
+import android.widget.ImageView;
 import com.example.applabarra.R;
 import com.example.applabarra.menu.tienda.TiendaActivity;
 
@@ -27,8 +30,6 @@ public class MenuActivity extends AppCompatActivity {
 
         // Carga la animación base
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-
-
         fadeIn.setStartOffset(0); // primer botón sin delay
         btnSobreNosotros.startAnimation(fadeIn);
 
@@ -44,12 +45,10 @@ public class MenuActivity extends AppCompatActivity {
         fadeIn4.setStartOffset(900); // 900 ms para el cuarto
         btnContacto.startAnimation(fadeIn4);
 
-
-        // Configurar listeners para que al pulsar cada botón se abra la actividad correspondiente.
+        // Configurar listeners para cada botón
         btnSobreNosotros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Lanza NosotrosActivity
                 startActivity(new Intent(MenuActivity.this, SobreNosotrosActivity.class));
             }
         });
@@ -57,15 +56,14 @@ public class MenuActivity extends AppCompatActivity {
         btnMenuBebidas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Lanza MenuBebidasActivy
-                startActivity(new Intent(MenuActivity.this, MenuBebidasActivity.class));
+                // se muestra el QR en un BottomSheet
+                mostrarQRBottomSheet();
             }
         });
 
         btnTienda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Lanza TiendaACtivity
                 startActivity(new Intent(MenuActivity.this, TiendaActivity.class));
             }
         });
@@ -73,9 +71,28 @@ public class MenuActivity extends AppCompatActivity {
         btnContacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Lanza ContactoActivity
                 startActivity(new Intent(MenuActivity.this, ContactoActivity.class));
             }
         });
     }
+
+    private void mostrarQRBottomSheet() {
+        // Crear el BottomSheetDialog
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        // Inflar el layout del QR
+        View view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_qr, null);
+        bottomSheetDialog.setContentView(view);
+        // Configurar para que se cierre al tocar fuera
+        bottomSheetDialog.setCancelable(true);
+        bottomSheetDialog.setCanceledOnTouchOutside(true);
+
+        // Ajustar la altura del BottomSheet a la mitad de la pantalla
+        View parent = (View) view.getParent();
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(parent);
+        int halfScreenHeight = getResources().getDisplayMetrics().heightPixels / 2;
+        behavior.setPeekHeight(halfScreenHeight);
+
+        bottomSheetDialog.show();
+    }
 }
+

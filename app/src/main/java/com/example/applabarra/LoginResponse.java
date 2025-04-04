@@ -1,18 +1,29 @@
 package com.example.applabarra;
 
-public class LoginResponse {
-    private boolean success;
-    private String message;
-    private User data;
+import com.google.gson.annotations.SerializedName;
 
+public class LoginResponse {
+
+    @SerializedName("success")
+    private boolean success;
+
+    @SerializedName("message")
+    private String message;
+
+    @SerializedName("token")
+    private String token;
+
+    // Métodos getters
     public boolean isSuccess() {
         return success;
     }
+
     public String getMessage() {
         return message;
     }
-    public User getData() {
-        return data;
+
+    public String getToken() {
+        return token;
     }
 }
 

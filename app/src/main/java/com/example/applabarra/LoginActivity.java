@@ -1,6 +1,7 @@
 package com.example.applabarra;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,14 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.applabarra.menu.MenuActivity;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import com.example.applabarra.SecurePrefs;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         lblregistrar = findViewById(R.id.txtRegistrar);
         btnregistrar = findViewById(R.id.btningresar);
 
-        // COnfiguración del listener para el botón de ingresar
+        // Configuración del listener para el botón de ingresar
         btnregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 String usuarioStr = usuario.getText().toString().trim();
                 String claveStr = clave.getText().toString().trim();
 
-                // Validación: Se verifica que ambos campos no estén vacios
+                // Validación: Se verifica que ambos campos no estén vacíos
                 if(usuarioStr.isEmpty() || claveStr.isEmpty()){
                     Toast.makeText(LoginActivity.this, "Rellena todos los campos", Toast.LENGTH_SHORT).show();
                     return;
@@ -57,26 +58,35 @@ public class LoginActivity extends AppCompatActivity {
                 // Configuración de Retrofit para realizar la llamada al API
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL) // Establece la URL base
-                        .addConverterFactory(GsonConverterFactory.create()) // Confugura el convertidor JSON
+                        .addConverterFactory(GsonConverterFactory.create()) // Configura el convertidor JSON
                         .build();
                 // Creación de la instancia del servicio API usando la interfaz ApiService
                 ApiService apiService = retrofit.create(ApiService.class);
 
-                // Llamada al metodo de login del API, escribiendo usuario y clave
+                // Llamada al método de login del API, enviando usuario y clave
                 Call<LoginResponse> call = apiService.login(usuarioStr, claveStr);
                 call.enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        //Verifica que la respuesta sea exitosa y con tenga datos
+                        // Verifica que la respuesta sea exitosa y tenga datos
                         if(response.isSuccessful() && response.body() != null){
                             // Si el login es exitoso según el servidor
                             if(response.body().isSuccess()){
                                 Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
-                                //Si el login es exitoso procederá a abrir la siguiente pantalla
+
+                                // Guardar datos sensibles de forma segura (ejemplo: token)
+                                // Asegúrate de que LoginResponse tenga el método getToken() o el dato que necesites almacenar.
+                                String token = response.body().getToken(); // Ajusta esto según tu modelo
+                                SecurePrefs securePrefs = SecurePrefs.getInstance(LoginActivity.this);
+                                SharedPreferences.Editor editor = securePrefs.getSharedPreferences().edit();
+                                editor.putString("user_token", token);
+                                editor.apply();
+
+                                // Inicia la siguiente Activity (MenuActivity) con animación
                                 Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                                 startActivity(intent);
                                 overridePendingTransition(R.anim.slide_in, R.anim.fade_out);
-                                finish(); //Esto cierra la LoginActivity para que el usuario no pueda volver atrás
+                                finish(); // Cierra la LoginActivity
                             } else {
                                 // Muestra el mensaje de error enviado por el servidor
                                 Toast.makeText(LoginActivity.this, "Error: " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -100,10 +110,11 @@ public class LoginActivity extends AppCompatActivity {
         lblregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Inicia la act de registro
-               startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
+                // Inicia la actividad de registro
+                startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
             }
         });
     }
 }
+
 
